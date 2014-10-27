@@ -2,9 +2,12 @@
 # Script for adding package to repository and signing it
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 KEYID="24045008"
-. ${DIR}/common_inc.sh
 
-cd ${T2W_BUILD}/deb_dist
+REPO_DIR='/data/deb'
+
+BUILD_DIR=$( readlink -m ${DIR}/../../)
+
+cd ${BUILD_DIR}
 
 echo "[+] Adding deb package to the local repository"
 dput local tor2web*changes
